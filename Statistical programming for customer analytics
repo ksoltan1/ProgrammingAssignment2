@@ -1,0 +1,17 @@
+We will develop a program to partially hide information for an image data; specifically, we will convert the parrot image used in class into a mosaic.
+Submission guideline: submit in a single PDF file containing (i) your R code and (ii) the output below. One approach is to copy and paste the code and outputs onto a Word file and then save the Word file as PDF.
+* The number in square brackets following the question enumeration denotes the total points for the respective question.
+1. [1] RGB code is a triplet of numbers denoting the degree of redness, greenness, and blueness of a given pixel. Write code that computes the sum of the RGB codes for the (1,1) pixel (i.e., the pixel on the top-left corner of the image).
+2. Change the color of the image’s second quadrant (i.e., top-right block of the 2×2 partition) to its average color.
+a. [1] Let the variable nrow denote the number of “pixel rows” and the variable ncol the number of “pixel columns.” Hint: note that the value of ncol should be greater than the value of nrow.
+b. [3] Compute the average red color of the second quadrant by traversing through pixels (𝑖𝑖,𝑗𝑗), where 𝑖𝑖 ranges from 1 to 𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛/2 and 𝑗𝑗 ranges from 𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛/2 to 𝑛𝑛𝑛𝑛𝑛𝑛𝑛𝑛. Hint: the following command computes and stores into variable avg.r the average red color values of pixels in the second quadrant.
+avg.r <- mean(im.parrot.new[1:(nrow/2),(ncol/2):ncol,1,1])
+In a similar manner, compute the average green and average blue colors of the second quadrant and store them in variables avg.g and avg.b, respectively.
+c. [3] For all pixels in the second quadrant, change the (r,g,b) code to (avg.r, avg.g, avg.b). Hint: the following command changes the red color value of the second quadrant to avg.r.
+im.parrot.new[1:(nrow/2),(ncol/2):ncol,1,1] <- avg.r
+3. [2] Using the steps in 1, change the color of the remaining three quadrants to their respective average colors.
+4. [1] Plot the blurred im.parrot.new next to the original parrot. Hint: display multiple plots side-by-side using
+par(mfrow=c(1,2))
+plot(im.parrot)
+plot(im.parrot.new)
+5. [BONUS] [1] Instead of a 2×2 mosaic, create a 32×32 mosaic.
